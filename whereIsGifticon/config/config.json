@@ -1,0 +1,29 @@
+{
+  "development": {
+    "username": "root",
+    "password": "1436",
+    "database": "whereIs",
+    "host": "172.19.148.3",
+    "dialect": "mysql",
+	"port": 3307,
+	"operatorAliases":false
+},
+"test": {
+	"username": "root",
+    "password": "1436",
+    "database": "whereIs",
+    "host": "172.19.148.3",
+    "dialect": "mysql",
+	"port": 3307,
+	"operatorAliases":false
+},
+"production": {
+	"username": "root",
+    "password": "1436",
+    "database": "whereIs",
+    "host": "172.19.148.3",
+    "dialect": "mysql",
+	"port": 3307,
+	"operatorAliases":false
+  }
+}
