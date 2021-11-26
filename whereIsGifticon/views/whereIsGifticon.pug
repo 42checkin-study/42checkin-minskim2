@@ -1,0 +1,36 @@
+extends layout
+
+block content
+	h1= title
+	p 이곳은 친구들에게 받은 기프티콘과 선물내역을 기록하는 곳 입니다.
+	h2 등록된 친구들
+	for user in userData
+		form(action=`/users/${user.name}` method="POST")
+			input(type="hidden" name="_method" value="DELETE")
+			a(href=`/users/${user.name}`)= user.name
+			input(type="submit" value = "삭제")
+
+	h2 새 친구 등록
+
+	//-form(action="/users" method="POST")
+	//-	p name:
+	//-		input(type="text" name="name" placeholder="")
+	//-	p email:
+	//-		input(type="text" name="email" placeholder="")
+	//-	p snsId:
+	//-		input(type="textarea" name="snsId" placeholder="")
+	//-	input(type="submit" value="저장")
+
+	iframe(name="dummyframe" id="dummyframe" style="display: none;")
+	form(action="/users", method="post" target="dummyframe")
+		p
+			label(for="name") 이름
+			input(type="text" id="name" name="name")
+		p
+			label(for="email") 이메일
+			input(type="text" id="email" name="email")
+		p
+			label(for="email") sns 아이디
+			input(type="textarea" id="snsid" name="snsId")
+		button(type="submit" action = "/") 저장
+
