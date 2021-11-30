@@ -1,18 +1,22 @@
 {
-  "name": "whereisgifticon",
+  "name": "www",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "dev": "nodemon --watch ./ --exec node ./bin/www"
+    "start": "nodemon --ignore node_modules/ ./bin/www.js",
+    "dev": "nodemon --watch ./ --exec node ./bin/www.js"
   },
   "dependencies": {
+    "bootstrap": "^5.1.3",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
+    "method-override": "^3.0.0",
     "morgan": "~1.9.1",
+    "multer": "^1.4.3",
     "mysql2": "^2.3.3",
     "pug": "^3.0.2",
     "sequelize": "^6.12.0-alpha.1"

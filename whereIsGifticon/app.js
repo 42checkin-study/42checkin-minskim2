@@ -11,8 +11,11 @@ var usersRouter = require('./routes/users');
 var {sequelize} = require('./models/index');
 sequelize.sync();
 
-var app = express();
+// delete와 put을 위한 미들웨어 method-override
+var methodOverride = require('method-override');
 
+var app = express();
+app.use(methodOverride('_method'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -22,6 +25,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')));
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
 app.use('/', whereIsRouter);
 app.use('/index', indexRouter);
@@ -42,5 +48,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

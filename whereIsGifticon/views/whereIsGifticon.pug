@@ -5,11 +5,12 @@ block content
 	p 이곳은 친구들에게 받은 기프티콘과 선물내역을 기록하는 곳 입니다.
 	h2 등록된 친구들
 	for user in userData
-		form(action=`/users/${user.name}` method="POST")
-			input(type="hidden" name="_method" value="DELETE")
+		form(action=`/users/${user.name}?_method=DELETE` method="POST")
+			//-input(type="hidden" name="_method" value="DELETE")
 			a(href=`/users/${user.name}`)= user.name
-			input(type="submit" value = "삭제")
+			button(type="submit") 삭제
 
+	br
 	h2 새 친구 등록
 
 	//-form(action="/users" method="POST")
@@ -30,7 +31,7 @@ block content
 			label(for="email") 이메일
 			input(type="text" id="email" name="email")
 		p
-			label(for="email") sns 아이디
-			input(type="textarea" id="snsid" name="snsId")
-		button(type="submit" action = "/") 저장
+			label(for="snsid") sns 아이디
+			input(type="text" id="snsId" name="snsId")
+		button(type="submit") 저장
 

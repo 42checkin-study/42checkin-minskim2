@@ -1,6 +1,15 @@
 extends layout
 
 block content
-  h1= title
-  p=userData.name
+	h1= `${title}에게 받은 선물`
+	p= userData.name
+	form(action=`${userData.name}/upload` method='post' enctype="multipart/form-data")
+		table= "기프티콘 업로드"
+		td
+			input(type='file' name='userfile')
+		td
+			input(type='submit')
+
+	for file in filelist
+		img(src=`/${file}`)
 
