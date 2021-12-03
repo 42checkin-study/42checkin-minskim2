@@ -1,37 +1,40 @@
 extends layout
 
 block content
-	h1= title
-	p 이곳은 친구들에게 받은 기프티콘과 선물내역을 기록하는 곳 입니다.
-	h2 등록된 친구들
+	p 이곳은 친구들에게 선물 받은 기프티콘을 저장 하는 곳 입니다.
+	br
+	br
+	h3 등록된 친구들
 	for user in userData
-		form(action=`/users/${user.name}?_method=DELETE` method="POST")
+		form(action=`/users/${user.id}?_method=DELETE` class="form-group" method="POST")
 			//-input(type="hidden" name="_method" value="DELETE")
-			a(href=`/users/${user.name}`)= user.name
-			button(type="submit") 삭제
+			div(style="margin-bottom: 5px;")
+				a(href=`/users/${user.name}` style="margin-right: 10px;")= user.name
+				button(type="submit" class="btn btn-outline-danger" style="width: 60px; font-size: 15px") 삭제
 
 	br
-	h2 새 친구 등록
+	br
+	h3 새 친구 등록
 
-	//-form(action="/users" method="POST")
-	//-	p name:
-	//-		input(type="text" name="name" placeholder="")
-	//-	p email:
-	//-		input(type="text" name="email" placeholder="")
-	//-	p snsId:
-	//-		input(type="textarea" name="snsId" placeholder="")
-	//-	input(type="submit" value="저장")
+	form(action="/users" class="form-group" method="POST")
+		p 이름:
+			input(type="text" name="name" placeholder="" class="form-control")
+		p 이메일:
+			input(type="text" name="email" placeholder="" class="form-control")
+		p sns 아이디:
+			input(type="textarea" name="snsId" placeholder="" class="form-control")
+		button(type="submit" class="btn btn-outline-primary") 저장
 
-	iframe(name="dummyframe" id="dummyframe" style="display: none;")
-	form(action="/users", method="post" target="dummyframe")
-		p
-			label(for="name") 이름
-			input(type="text" id="name" name="name")
-		p
-			label(for="email") 이메일
-			input(type="text" id="email" name="email")
-		p
-			label(for="snsid") sns 아이디
-			input(type="text" id="snsId" name="snsId")
-		button(type="submit") 저장
+	//-iframe(name="dummyframe" id="dummyframe" style="display: none;")
+	//-form(action="/users", method="post" target="dummyframe")
+	//-	p
+	//-		label(for="name") 이름
+	//-		input(type="text" id="name" name="name")
+	//-	p
+	//-		label(for="email") 이메일
+	//-		input(type="text" id="email" name="email")
+	//-	p
+	//-		label(for="snsid") sns 아이디
+	//-		input(type="text" id="snsId" name="snsId")
+	//-	button(type="submit") 저장
 

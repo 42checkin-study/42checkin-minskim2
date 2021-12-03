@@ -23,7 +23,8 @@ const userController = {
 		if (image === undefined) {
 			return res.status(400).send(util.fail(400, "이미지가 존재하지 않습니다."));
 		}
-		res.status(200).send(util.success(200, "요청 성공 ~~ ", image));
+		res.redirect(`/users/${req.params.name}`);
+		//res.status(200).send(util.success(200, "요청 성공 ~~ ", image));
 	}
 }
 

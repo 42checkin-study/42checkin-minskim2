@@ -5,6 +5,7 @@ module.exports = ((sequelize, DataTypes) =>{
 		name: {
 			type: Sequelize.STRING(100),
 			unique: true,
+			allowNull: false,
 		},
 		email: {
 			type: Sequelize.STRING(40),
@@ -15,7 +16,6 @@ module.exports = ((sequelize, DataTypes) =>{
 			allowNull: true,
 		},
 	},{
-		timestamps: true,
-		paranoid: true,
+		timestamps: true
 	})
 });

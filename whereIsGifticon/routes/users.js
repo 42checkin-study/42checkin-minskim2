@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
-
 var fs = require('fs');
 
 //var upload = multer({ dest: 'uploads/' });
@@ -68,7 +67,8 @@ router.post('/', function (req, res, next) {
 	})
 	.then((result) => {
 		console.log(result);
-		res.status(200).json(result);
+		res.redirect('/');
+		//res.status(200).json(result);
 	  })
 	.catch((err) => {
 		console.error(err);
@@ -93,16 +93,24 @@ router.put('/:name', function (req, res, next) {
 	})
 });
 
-router.delete('/:name', function (req, res, next) {
-	User.destroy({where: {name: req.params.name}})
+router.delete('/:id', function (req, res, next) {
+	User.destroy({where: {id: parseInt(req.params.id)}})
 	.then((result) => {
 		console.log(result);
-		res.status(200).json(result);
+		res.redirect('/');
+		//res.status(200).json(result);
 	  })
 	.catch((err) => {
 		console.error(err);
 		next(err);
 	})
 });
+
+router.delete('/:name/:fileName', function(req, res, next) {
+	fs.unlink(`uploads/${req.params.fileName}`,(err)=> {
+		res.redirect(`/users/${req.params.name}`);
+		console.log(req.params.fileName);
+	})
+})
 
 module.exports = router;

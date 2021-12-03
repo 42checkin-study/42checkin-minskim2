@@ -1,15 +1,19 @@
 extends layout
 
 block content
-	h1= `${title}에게 받은 선물`
+	br
+	h2= `${title}에게 받은 선물`
 	p= userData.name
 	form(action=`${userData.name}/upload` method='post' enctype="multipart/form-data")
 		table= "기프티콘 업로드"
 		td
 			input(type='file' name='userfile')
 		td
-			input(type='submit')
+			button(type="submit" class="btn btn-outline-success") 업로드
 
 	for file in filelist
-		img(src=`/${file}`)
+		form(action=`/users/${userData.name}/${file}?_method=DELETE` method="POST")
+			img(src=`/${file}`)
+			button(type="submit" class="btn btn-outline-danger") 삭제
+
 
