@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --watch ./ --exec node ./app.js",
-    "dev": "nodemon --watch ./ --exec node ./app.js"
+    "start": "nodemon --watch ./ app.js",
+    "dev": "nodemon --watch ./ app.js"
   },
   "keywords": [],
   "author": "",
