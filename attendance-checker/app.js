@@ -33,12 +33,12 @@ app.event('team_join', async ({ event, client }) => {
 // ============ 메시지 응답 =========================================
 
 // Listens to incoming messages that contain "hello"
-app.message('hello', async ({ message, say }) => {
+app.message('!정산', async ({ message, say }) => {
   // say() sends a message to the channel where the event was triggered
-  await say(":wave:");
+  await say("자, 이제 쇼당이 붙습니다~");
 });
 
-app.message('!출석시작', async ({ message, say }) => {
+app.message('!출발', async ({ message, say }) => {
   // say() sends a message to the channel where the event was triggered
   await say({
     blocks: [
@@ -46,13 +46,37 @@ app.message('!출석시작', async ({ message, say }) => {
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": `출석해라 <@${message.user}>!`
+          "text": `출발하시는 분들은 여기 스레드에 댓글을 달아주세요! <@${message.user}>!`
         },
         "accessory": {
           "type": "button",
           "text": {
             "type": "plain_text",
             "text": "출석"
+          },
+          "action_id": "button_click"
+        }
+      }
+    ],
+    text: `Hey there <@${message.user}>!`
+  });
+});
+
+app.message('!도착', async ({ message, say }) => {
+  // say() sends a message to the channel where the event was triggered
+  await say({
+    blocks: [
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": `도착하신 분들은 여기 스레드에 댓글을 달아주세요! <@${message.user}>!`
+        },
+        "accessory": {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "도착"
           },
           "action_id": "button_click"
         }
